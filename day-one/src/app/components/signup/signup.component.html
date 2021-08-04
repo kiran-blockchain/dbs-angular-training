@@ -4,13 +4,27 @@
     placeholder="Enter First Name"/>
 </div>
 <div>
-    <input [(ngModel)]="UserDetails.LastName"
-     placeholder="Enter Last Name"/>
+    <select class="form-control" 
+    [(ngModel)]="UserDetails.Country"
+     (change)="loadStates()">
+      <option *ngFor="let c of CountryList;let i = index"
+       [value]="c.value" >
+          {{i+1}}{{"-"+c.name}}</option>
+    </select>
 </div>
-
 <div>
-    <input [(ngModel)]="UserDetails.Gender" 
-    placeholder="Enter Gender"/>
+    <select class="form-control" [(ngModel)]="UserDetails.State">
+      <option *ngFor="let s of StateList;let i = index"
+       [value]="s.value">
+         {{s.name}}</option>
+    </select>
+</div>
+<div>
+    <input type="radio" name="gender" value="M" 
+    [(ngModel)]="UserDetails.gender"/>Male
+
+    <input type="radio" name="gender" value="F" 
+    [(ngModel)]="UserDetails.gender"/>Female
 </div>
 <div>
   <button class="btn btn-primary" 
