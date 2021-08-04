@@ -6,5 +6,5 @@ import { Component } from "@angular/core";
     styleUrls:['./app.header.css']
 })
 export class AppHeader{
-     companyName='DBS';
+    CompanyName:string ='DBS';
 }

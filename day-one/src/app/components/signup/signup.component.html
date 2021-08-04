@@ -1,0 +1,20 @@
+
+<div>
+    <input [(ngModel)]="UserDetails.FirstName" 
+    placeholder="Enter First Name"/>
+</div>
+<div>
+    <input [(ngModel)]="UserDetails.LastName"
+     placeholder="Enter Last Name"/>
+</div>
+
+<div>
+    <input [(ngModel)]="UserDetails.Gender" 
+    placeholder="Enter Gender"/>
+</div>
+<div>
+  <button class="btn btn-primary" 
+  (click)="signup()">SignUp </button>
+</div>
+
+{{UserDetails|json}}
