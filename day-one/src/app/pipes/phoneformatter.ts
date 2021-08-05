@@ -19,5 +19,4 @@ export class PhoneFormatter implements PipeTransform {
         }
         return input;
     }
-
 }
