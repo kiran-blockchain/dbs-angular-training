@@ -8,6 +8,8 @@ import { LeftNavComponent } from './components/left-nav/left-nav.component';
 import { DashboardMainComponent } from './components/dashboard-main/dashboard-main.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { DropdownComponent } from './components/common/dropdown/dropdown.component';
+import { TextBoxComponent } from './components/common/TextBox/textbox.component';
 
 @NgModule({
   //components
@@ -20,7 +22,9 @@ import { SignupComponent } from './components/signup/signup.component';
     LeftNavComponent,
     DashboardMainComponent,
     ForgotPasswordComponent,
-    SignupComponent
+    SignupComponent,
+    DropdownComponent,
+    TextBoxComponent
   ],
 
   //other modules should be referenced in imports

@@ -1,0 +1,13 @@
+<div class="row mb-3">
+    <label [for]="data.id" 
+    class="col-sm-2 col-form-label">{{data.LabelText}}
+</label>
+    <div class="col-sm-6">
+        <input [type]="data.type"
+        [(ngModel)]="data.Value" 
+        class="form-control" 
+        [name]="data.name"
+        [placeholder]="data.placeholder"
+        [id]="data.id">
+    </div>
+</div>

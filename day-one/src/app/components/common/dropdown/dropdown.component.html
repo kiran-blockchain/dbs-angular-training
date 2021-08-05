@@ -1,0 +1,15 @@
+<div class="row mb-3">
+    <label [for]="data.id" 
+    class="col-sm-2 col-form-label">
+    {{data.LabelText}}</label>
+    <div class="col-sm-6">
+     <select class="form-control" 
+    
+     [(ngModel)]="data.SelectedValue" 
+     [name]="data.name"
+     [id]="data.id">
+        <option *ngFor="let i of data.ListItems" 
+        [value]="i.Key">{{i.Text}}</option>
+     </select>
+    </div>
+  </div>

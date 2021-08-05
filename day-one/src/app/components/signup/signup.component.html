@@ -1,36 +1,11 @@
 <div class="mt-4">
-    <div class="row mb-3">
-        <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
-        <div class="col-sm-6">
-            <input type="email" class="form-control" id="inputEmail3" 
-            [(ngModel)]="userProfile.Email">
-        </div>
-    </div>
-    <div class="row mb-3">
-        <label for="UserName" class="col-sm-2 col-form-label">UserName</label>
-        <div class="col-sm-6">
-            <input type="text" class="form-control" id="UserName" [(ngModel)]="userProfile.UserName">
-        </div>
-    </div>
-    <div class="row mb-3">
-        <label for="UserName" class="col-sm-2 col-form-label">Password</label>
-        <div class="col-sm-6">
-            <input type="text" class="form-control" id="Password" [(ngModel)]="userProfile.Password">
-        </div>
-    </div>
-    <div class="row mb-3">
-        <label class="col-sm-2 col-form-label">First Name</label>
-        <div class="col-sm-6">
-            <input type="text" [(ngModel)]="userProfile.FirstName" class="form-control" id="FirstName"
-                [(ngModel)]="userProfile.FirstName">
-        </div>
-    </div>
-    <div class="row mb-3">
-        <label class="col-sm-2 col-form-label">Last Name</label>
-        <div class="col-sm-6">
-            <input type="text" [(ngModel)]="userProfile.LastName" class="form-control" id="LastName">
-        </div>
-    </div>
+
+    <dbs-text-box [data]="Controls.Email"></dbs-text-box>
+    <dbs-text-box [data]="Controls.UserName"></dbs-text-box>
+    <dbs-text-box [data]="Controls.Password"></dbs-text-box>
+    <dbs-text-box [data]="Controls.FirstName"></dbs-text-box>
+    <dbs-text-box [data]="Controls.LastName"></dbs-text-box>
+
     <div class="row mb-3">
         <label class="col-sm-2 col-form-label">Age</label>
         <div class="col-sm-6">
@@ -42,22 +17,25 @@
         <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
         <div class="col-sm-10">
             <div class="form-check">
-                <input class="form-check-input" [(ngModel)]="userProfile.Gender" type="radio" name="gridRadios" id="gridRadios1"
-                    value="M">
+                <input class="form-check-input" [(ngModel)]="userProfile.Gender" type="radio" name="gridRadios"
+                    id="gridRadios1" value="M">
                 <label class="form-check-label" for="gridRadios1">
                     Male
                 </label>
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" [(ngModel)]="userProfile.Gender"
-                 name="gridRadios" id="gridRadios2"
-                    value="F">
+                <input class="form-check-input" type="radio" [(ngModel)]="userProfile.Gender" name="gridRadios"
+                    id="gridRadios2" value="F">
                 <label class="form-check-label" for="gridRadios2">
                     Female
                 </label>
             </div>
         </div>
+
     </fieldset>
+    <dbs-dropdown [data]="countryListInfo">
+    </dbs-dropdown>
+
     <div class="row mb-3">
         <div class="col-sm-10 offset-sm-2">
             <div class="form-check">
@@ -68,9 +46,6 @@
             </div>
         </div>
     </div>
-    
-    <button type="button" class="btn btn-primary" 
-   
-    *ngIf="showSignUp()"
-    [disabled]="disableSingup()">Sign up</button>
+
+    <button type="button" class="btn btn-primary" *ngIf="showSignUp()" [disabled]="disableSingup()">Sign up</button>
 </div>
