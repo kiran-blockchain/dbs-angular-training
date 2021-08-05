@@ -4,8 +4,10 @@
     {{data.LabelText}}</label>
     <div class="col-sm-6">
      <select class="form-control" 
-    
-     [(ngModel)]="data.SelectedValue" 
+      
+     (change)="handleChange()"
+     
+      [(ngModel)]="data.SelectedValue" 
      [name]="data.name"
      [id]="data.id">
         <option *ngFor="let i of data.ListItems" 

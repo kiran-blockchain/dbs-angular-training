@@ -70,8 +70,8 @@ export class SignupComponent {
         { Key: "IN", Text: "India" },
         { Key: "USA", Text: "USA" }
       ],
-      name: "country",
-      id: "country"
+      name: "Country",
+      id: "Country"
     };
 
     this.stateListInfo = {
@@ -90,5 +90,7 @@ export class SignupComponent {
   disableSingup() {
     return !this.userProfile.AgreeTerms;
   }
-
+  handleSignupChange(data:any){
+    console.log(data);
+  }
 }

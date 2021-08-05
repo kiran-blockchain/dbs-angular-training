@@ -33,7 +33,9 @@
         </div>
 
     </fieldset>
-    <dbs-dropdown [data]="countryListInfo">
+    <dbs-dropdown 
+    [data]="countryListInfo" 
+    (onChange)="handleSignupChange($event)">
     </dbs-dropdown>
 
     <div class="row mb-3">

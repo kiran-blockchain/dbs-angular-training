@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, EventEmitter, Input, Output } from "@angular/core";
 import { ListItem } from "src/app/models/Dropdown";
 
 @Component({
@@ -7,17 +7,27 @@ import { ListItem } from "src/app/models/Dropdown";
 })
 
 export class DropdownComponent {
-    
-   @Input()
+
+    @Input()
     data: any;
+
+    @Output()
+    onChange: EventEmitter<any> = new EventEmitter();
 
     constructor() {
         this.data = {
             LabelText: "Send Label Text",
             SelectedValue: "",
             ListItems: [],
-            name:"",
-            id:""
+            name: "",
+            id: ""
         }
+    }
+
+    handleChange() {
+        this.onChange.emit({
+            name: this.data.name,
+            SelectedValue: this.data.SelectedValue
+        });
     }
 }
