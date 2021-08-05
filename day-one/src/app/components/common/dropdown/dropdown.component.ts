@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { ListItem } from "src/app/models/Dropdown";
 
 @Component({
@@ -6,7 +6,7 @@ import { ListItem } from "src/app/models/Dropdown";
     selector: 'dbs-dropdown'
 })
 
-export class DropdownComponent {
+export class DropdownComponent implements OnInit {
 
     @Input()
     data: any;
@@ -16,12 +16,15 @@ export class DropdownComponent {
 
     constructor() {
         this.data = {
-            LabelText: "Send Label Text",
+            LabelText: "",
             SelectedValue: "",
             ListItems: [],
             name: "",
             id: ""
         }
+    }
+    ngOnInit(): void {
+        
     }
 
     handleChange() {

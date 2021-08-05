@@ -1,17 +1,17 @@
 <div class="mt-4">
 
-    <dbs-text-box [data]="Controls.Email"></dbs-text-box>
-    <dbs-text-box [data]="Controls.UserName"></dbs-text-box>
-    <dbs-text-box [data]="Controls.Password"></dbs-text-box>
-    <dbs-text-box [data]="Controls.FirstName"></dbs-text-box>
-    <dbs-text-box [data]="Controls.LastName"></dbs-text-box>
+    <dbs-text-box [data]="Controls.Email" (onChange)="handleSignupChange($event)"></dbs-text-box>
+    <dbs-text-box [data]="Controls.UserName" (onChange)="handleSignupChange($event)"></dbs-text-box>
+    <dbs-text-box [data]="Controls.Password" (onChange)="handleSignupChange($event)"></dbs-text-box>
+    <dbs-text-box [data]="Controls.FirstName" (onChange)="handleSignupChange($event)"></dbs-text-box>
+  
+    <dbs-text-box [data]="Controls.LastName" (onChange)="handleSignupChange($event)"></dbs-text-box>
 
-    <div class="row mb-3">
-        <label class="col-sm-2 col-form-label">Age</label>
-        <div class="col-sm-6">
-            <input type="text" [(ngModel)]="userProfile.Age" class="form-control" id="Age">
-        </div>
-    </div>
+    <dbs-text-box [data]="Controls.Age" (onChange)="handleSignupChange($event)"></dbs-text-box>
+ 
+    <dbs-dropdown [data]="countryListInfo" (onChange)="handleSignupChange($event)">
+    </dbs-dropdown>
+
 
     <fieldset class="row mb-3">
         <legend class="col-form-label col-sm-2 pt-0">Gender</legend>
@@ -33,10 +33,7 @@
         </div>
 
     </fieldset>
-    <dbs-dropdown 
-    [data]="countryListInfo" 
-    (onChange)="handleSignupChange($event)">
-    </dbs-dropdown>
+
 
     <div class="row mb-3">
         <div class="col-sm-10 offset-sm-2">
@@ -51,3 +48,8 @@
 
     <button type="button" class="btn btn-primary" *ngIf="showSignUp()" [disabled]="disableSingup()">Sign up</button>
 </div>
+<pre>
+{{currentDate|date:'MM-dd-yyyy hh:mm:ss'}}
+{{salary|currency:'INR'}}
+{{phone|phoneformat:userProfile.Country}}
+</pre>

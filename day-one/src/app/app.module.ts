@@ -10,6 +10,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { SignupComponent } from './components/signup/signup.component';
 import { DropdownComponent } from './components/common/dropdown/dropdown.component';
 import { TextBoxComponent } from './components/common/TextBox/textbox.component';
+import { PhoneFormatter } from './pipes/phoneformatter';
 
 @NgModule({
   //components
@@ -24,7 +25,8 @@ import { TextBoxComponent } from './components/common/TextBox/textbox.component'
     ForgotPasswordComponent,
     SignupComponent,
     DropdownComponent,
-    TextBoxComponent
+    TextBoxComponent,
+    PhoneFormatter
   ],
 
   //other modules should be referenced in imports

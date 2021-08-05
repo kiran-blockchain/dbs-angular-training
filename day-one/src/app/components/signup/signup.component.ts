@@ -6,7 +6,7 @@ import { UserProfile } from 'src/app/models/UserProfile';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
-export class SignupComponent {
+export class SignupComponent implements OnInit {
   userProfile: UserProfile;
   countryListInfo: any;
   stateListInfo: any;
@@ -60,8 +60,21 @@ export class SignupComponent {
       id: "Age"
     }
   };
+  currentDate= new Date();
+  salary =10000;
+  phone=1234567890;
   constructor() {
     this.userProfile = new UserProfile();
+    
+  }
+  ngOnInit(): void {
+    this.stateListInfo = {
+      LabelText: "State",
+      SelectedValue: "",
+      ListItems: [{ Key: "", Text: "Select State" }],
+      name: "state",
+      id: "state"
+    };
     this.countryListInfo = {
       LabelText: "Country",
       SelectedValue: "",
@@ -73,16 +86,6 @@ export class SignupComponent {
       name: "Country",
       id: "Country"
     };
-
-    this.stateListInfo = {
-      LabelText: "State",
-      SelectedValue: "",
-      ListItems: [{ Key: "", Text: "Select State" }],
-      name: "state",
-      id: "state"
-    }
-
-
   }
   showSignUp() {
     return this.userProfile.AgreeTerms;
@@ -90,7 +93,8 @@ export class SignupComponent {
   disableSingup() {
     return !this.userProfile.AgreeTerms;
   }
-  handleSignupChange(data:any){
+  handleSignupChange(data: any) {
     console.log(data);
+    this.userProfile = { ...this.userProfile, [data.name]: data.SelectedValue };
   }
 }
