@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { UserProfile } from 'src/app/models/UserProfile';
+import { LookupService } from 'src/app/services/lookup.service';
 
 @Component({
   selector: 'app-signup',
@@ -63,7 +64,7 @@ export class SignupComponent implements OnInit {
   currentDate= new Date();
   salary =10000;
   phone=1234567890;
-  constructor() {
+  constructor(private lookupSvc:LookupService) {
     this.userProfile = new UserProfile();
     
   }
@@ -86,6 +87,7 @@ export class SignupComponent implements OnInit {
       name: "Country",
       id: "Country"
     };
+   console.log(this.lookupSvc.getGenderList());
   }
   showSignUp() {
     return this.userProfile.AgreeTerms;
@@ -96,5 +98,8 @@ export class SignupComponent implements OnInit {
   handleSignupChange(data: any) {
     console.log(data);
     this.userProfile = { ...this.userProfile, [data.name]: data.SelectedValue };
+  }
+  handleClick(){
+    this.lookupSvc.navItems.companyName="D-Banking"
   }
 }

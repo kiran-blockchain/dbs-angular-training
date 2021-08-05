@@ -11,6 +11,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { DropdownComponent } from './components/common/dropdown/dropdown.component';
 import { TextBoxComponent } from './components/common/TextBox/textbox.component';
 import { PhoneFormatter } from './pipes/phoneformatter';
+import { LookupService } from './services/lookup.service';
 
 @NgModule({
   //components
@@ -35,7 +36,7 @@ import { PhoneFormatter } from './pipes/phoneformatter';
     FormsModule
   ],
   //Services should be referenced in providers
-  providers: [],
+  providers: [LookupService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

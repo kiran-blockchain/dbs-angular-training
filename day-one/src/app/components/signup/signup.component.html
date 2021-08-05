@@ -46,7 +46,9 @@
         </div>
     </div>
 
-    <button type="button" class="btn btn-primary" *ngIf="showSignUp()" [disabled]="disableSingup()">Sign up</button>
+    <button type="button" class="btn btn-primary"
+    (click)="handleClick()"
+    *ngIf="showSignUp()" [disabled]="disableSingup()">Sign up</button>
 </div>
 <pre>
 {{currentDate|date:'MM-dd-yyyy hh:mm:ss'}}
