@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import {FormsModule} from '@angular/forms';
-import {HttpClientModule} from '@angular/common/http'
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'
+import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { AppHeader } from './components/header/app.header';
@@ -16,6 +17,9 @@ import { PhoneFormatter } from './pipes/phoneformatter';
 import { LookupService } from './services/lookup.service';
 import { UserService } from './services/user.service';
 import { ApiService } from './services/api.service';
+import { LoginComponent } from './components/login/login.component';
+import { ProductsComponent } from './components/products/products.component';
+
 
 @NgModule({
   //components
@@ -31,17 +35,33 @@ import { ApiService } from './services/api.service';
     SignupComponent,
     DropdownComponent,
     TextBoxComponent,
-    PhoneFormatter
+    PhoneFormatter,
+    LoginComponent,
+    ProductsComponent
   ],
 
   //other modules should be referenced in imports
   imports: [
     BrowserModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot([
+      {
+        path: 'login', component:
+          LoginComponent
+      },
+      {
+        path: 'register', component:
+          SignupComponent
+      },
+      {
+        path:'products',
+        component:ProductsComponent
+      }
+    ])
   ],
   //Services should be referenced in providers
-  providers: [LookupService,UserService,ApiService],
+  providers: [LookupService, UserService, ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
