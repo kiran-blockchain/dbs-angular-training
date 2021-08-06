@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { UserProfile } from 'src/app/models/UserProfile';
 import { ApiService } from 'src/app/services/api.service';
@@ -13,6 +14,7 @@ export class SignupComponent implements OnInit {
   userProfile: UserProfile;
   countryListInfo: any;
   stateListInfo: any;
+  
   Controls = {
     Phone: {
       LabelText: "Phone",
@@ -79,6 +81,10 @@ export class SignupComponent implements OnInit {
     private apiSvc: ApiService
   ) {
     this.userProfile = new UserProfile();
+    this.apiResult = {
+      status:"none",
+      message:""
+    }
 
   }
   ngOnInit(): void {
@@ -113,6 +119,7 @@ export class SignupComponent implements OnInit {
   handleSignupChange(data: any) {
     this.userProfile={...this.userProfile,[data.name]:data.SelectedValue};
   }
+  apiResult:any;
   handleClick() {
     let payLoad = {
       "EMAIL": this.userProfile.Email,
@@ -122,12 +129,24 @@ export class SignupComponent implements OnInit {
     this.apiSvc.ApiPost('http://51.81.71.198:3000/api/members/register', payLoad)
       .subscribe((result: any) => {
         console.log(result);
+        this.apiResult.status="success";
+        this.apiResult.message="User registered successfully"
+        setTimeout(this.resetApiResult,5000)
       },
         err => {
           console.log(err);
+          this.apiResult.status="error";
+          this.apiResult.message="Unable to register user."
+          setTimeout(this.resetApiResult,5000)
         });
   }
-
+  showApiResult(){
+    return this.apiResult.status!='none';
+  }
+  resetApiResult =()=>{
+    this.apiResult.status="none";
+    this.apiResult.message="";
+  }
   getCountryList() {
     this.countryListInfo.ListItems = this.lookupSvc.CountryList;
   }

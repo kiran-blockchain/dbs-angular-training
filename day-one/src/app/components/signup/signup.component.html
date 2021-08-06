@@ -51,6 +51,11 @@
     (click)="handleClick()"
     >Sign up</button>
 </div>
+
+<div class="alert alert-dismissible alert-success" *ngIf="showApiResult()">
+    <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+        {{apiResult.message}}
+  </div>
 <!-- <pre>
 {{currentDate|date:'MM-dd-yyyy hh:mm:ss'}}
 {{salary|currency:'INR'}}

@@ -1,0 +1,7 @@
+<div class="mt-4">
+    <dbs-text-box [data]="Controls.Email" (onChange)="handleSignupChange($event)"></dbs-text-box>
+    <dbs-text-box [data]="Controls.Password" (onChange)="handleSignupChange($event)"></dbs-text-box>
+    <button type="button" class="btn btn-primary"
+    (click)="handleClick()"
+    >Login</button>
+</div>
