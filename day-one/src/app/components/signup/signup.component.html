@@ -8,6 +8,7 @@
     <dbs-text-box [data]="Controls.LastName" (onChange)="handleSignupChange($event)"></dbs-text-box>
 
     <dbs-text-box [data]="Controls.Age" (onChange)="handleSignupChange($event)"></dbs-text-box>
+    <dbs-text-box [data]="Controls.Phone" (onChange)="handleSignupChange($event)"></dbs-text-box>
  
     <dbs-dropdown [data]="countryListInfo" (onChange)="handleSignupChange($event)">
     </dbs-dropdown>
@@ -48,10 +49,10 @@
 
     <button type="button" class="btn btn-primary"
     (click)="handleClick()"
-    *ngIf="showSignUp()" [disabled]="disableSingup()">Sign up</button>
+    >Sign up</button>
 </div>
-<pre>
+<!-- <pre>
 {{currentDate|date:'MM-dd-yyyy hh:mm:ss'}}
 {{salary|currency:'INR'}}
 {{phone|phoneformat:userProfile.Country}}
-</pre>
+</pre> -->

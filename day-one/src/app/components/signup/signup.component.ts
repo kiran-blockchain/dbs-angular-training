@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { UserProfile } from 'src/app/models/UserProfile';
+import { ApiService } from 'src/app/services/api.service';
 import { LookupService } from 'src/app/services/lookup.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-signup',
@@ -12,6 +14,14 @@ export class SignupComponent implements OnInit {
   countryListInfo: any;
   stateListInfo: any;
   Controls = {
+    Phone: {
+      LabelText: "Phone",
+      SelectedValue: "",
+      placeholder: "Enter Phone Number",
+      type: "tel",
+      name: "Phone",
+      id: "Phone"
+    },
     Email: {
       LabelText: "Email",
       SelectedValue: "",
@@ -61,12 +71,15 @@ export class SignupComponent implements OnInit {
       id: "Age"
     }
   };
-  currentDate= new Date();
-  salary =10000;
-  phone=1234567890;
-  constructor(private lookupSvc:LookupService) {
+  currentDate = new Date();
+  salary = 10000;
+  phone = 1234567890;
+  constructor(private lookupSvc: LookupService,
+    private userSvc: UserService,
+    private apiSvc: ApiService
+  ) {
     this.userProfile = new UserProfile();
-    
+
   }
   ngOnInit(): void {
     this.stateListInfo = {
@@ -87,7 +100,9 @@ export class SignupComponent implements OnInit {
       name: "Country",
       id: "Country"
     };
-   console.log(this.lookupSvc.getGenderList());
+    console.log(this.lookupSvc.getGenderList());
+    this.getCountryList();
+
   }
   showSignUp() {
     return this.userProfile.AgreeTerms;
@@ -96,10 +111,24 @@ export class SignupComponent implements OnInit {
     return !this.userProfile.AgreeTerms;
   }
   handleSignupChange(data: any) {
-    console.log(data);
-    this.userProfile = { ...this.userProfile, [data.name]: data.SelectedValue };
+    this.userProfile={...this.userProfile,[data.name]:data.SelectedValue};
   }
-  handleClick(){
-    this.lookupSvc.navItems.companyName="D-Banking"
+  handleClick() {
+    let payLoad = {
+      "EMAIL": this.userProfile.Email,
+      "MOBILE_NUMBER": this.userProfile.Phone,
+      "PASSWORD": this.userProfile.Password
+    }
+    this.apiSvc.ApiPost('http://51.81.71.198:3000/api/members/register', payLoad)
+      .subscribe((result: any) => {
+        console.log(result);
+      },
+        err => {
+          console.log(err);
+        });
+  }
+
+  getCountryList() {
+    this.countryListInfo.ListItems = this.lookupSvc.CountryList;
   }
 }

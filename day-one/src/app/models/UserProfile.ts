@@ -10,4 +10,5 @@ export class UserProfile {
     Password: string='';
     ConfirmPassword: string='';
     AgreeTerms: string='';
+    Phone:string='';
 }

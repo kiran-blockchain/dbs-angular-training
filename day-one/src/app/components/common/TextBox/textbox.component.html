@@ -4,7 +4,7 @@
 </label>
     <div class="col-sm-6">
         <input [type]="data.type"
-        (keydown)="handleChange()"
+        (change)="handleChange()"
         [(ngModel)]="data.SelectedValue" 
         class="form-control" 
         [name]="data.name"

@@ -5,4 +5,6 @@ export interface IUserProfile {
    Login(userProfile:UserProfile):any;
    ForgotPassword(email:string):any;
    ResetPassword(otp:string,email:string):any;
+   GetUserProfile():string;
+   UpdateUserProfie():string;
 };

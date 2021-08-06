@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {FormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http'
+
 import { AppComponent } from './app.component';
 import { AppHeader } from './components/header/app.header';
 import { FooterComponent } from './components/footer/footer.component';
@@ -12,6 +14,8 @@ import { DropdownComponent } from './components/common/dropdown/dropdown.compone
 import { TextBoxComponent } from './components/common/TextBox/textbox.component';
 import { PhoneFormatter } from './pipes/phoneformatter';
 import { LookupService } from './services/lookup.service';
+import { UserService } from './services/user.service';
+import { ApiService } from './services/api.service';
 
 @NgModule({
   //components
@@ -33,10 +37,11 @@ import { LookupService } from './services/lookup.service';
   //other modules should be referenced in imports
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   //Services should be referenced in providers
-  providers: [LookupService],
+  providers: [LookupService,UserService,ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
