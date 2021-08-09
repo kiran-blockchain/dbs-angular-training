@@ -16,5 +16,6 @@ export class AppHeader implements OnInit{
        this.header= this.lookupService.navItems;
        
     }
+    alphaNumeric="^([a-zA-Z0-9 _-]+)$";
     
 }
