@@ -1,1 +1,24 @@
-<p>products works!</p>
+<div class="row mt-5" >
+    <div class="col-md-3" *ngFor="let p of products" >
+        <div class="card-header  bg-primary text-white">{{p.name}}</div>
+        <div class="card-body">
+            <img [src]="p.image" class="card-img-top" alt="...">
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-3">
+                        <button class="btn btn-danger">+</button>
+                    </div>
+                    <div class="col-3">0
+
+                    </div>
+                    <div class="col-3">
+                        <button class="btn btn-success ">-</button>
+                    </div>
+                </div>
+            </div>
+            <!-- <h4 class="card-title">Primary card title</h4>
+            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
+                content.</p> -->
+        </div>
+    </div>
+</div>
