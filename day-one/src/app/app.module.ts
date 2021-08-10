@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
+import {ReactiveFormsModule} from '@angular/forms';
 import { AppComponent } from './app.component';
 import { AppHeader } from './components/header/app.header';
 import { FooterComponent } from './components/footer/footer.component';
@@ -11,6 +11,7 @@ import { DBSRouterModule } from './rotuer/router.module';
 import { ServiceModule } from './services/service.module';
 import { UserModule } from './user/user.module';
 import { DBSCommonModule } from './common/common.module';
+import { AccountComponent } from './account/account.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { DBSCommonModule } from './common/common.module';
     FooterComponent,
     LeftNavComponent,
     DashboardMainComponent,
-    ProductsComponent
+    ProductsComponent,
+    AccountComponent
   ],
 
   //other modules should be referenced in imports
@@ -33,6 +35,7 @@ import { DBSCommonModule } from './common/common.module';
     DBSRouterModule,
     DBSCommonModule,
     UserModule,
+    ReactiveFormsModule,
     ServiceModule],
   bootstrap: [AppComponent]
 })

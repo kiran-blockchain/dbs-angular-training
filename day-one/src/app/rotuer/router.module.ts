@@ -1,5 +1,6 @@
 import { NgModule } from "@angular/core";
 import { RouterModule } from '@angular/router';
+import { AccountComponent } from "../account/account.component";
 import { LoginComponent } from "../components/login/login.component";
 import { ProductsComponent } from "../components/products/products.component";
 import { SignupComponent } from "../components/signup/signup.component";
@@ -9,6 +10,10 @@ import { ProfileComponent } from "../user/profile/profile.component";
     declarations: [],
     imports: [
         RouterModule.forRoot([
+            {
+                path: 'account', component:
+                    AccountComponent
+            },
             {
                 path: 'profile', component:
                     ProfileComponent

@@ -1,0 +1,50 @@
+<h1>Reactive Forms</h1>
+
+<form [formGroup]="accountForm" novalidate>
+    <div>
+        <label>First Name</label>
+        <input type="text"  name="firstName" formControlName="firstName"/>
+    </div>
+    <div *ngIf="validator('firstName')">
+            <div *ngIf="messageCheck('firstName','required')">
+                First name is required
+            </div>
+            <div *ngIf="messageCheck('firstName','minlength')">
+                First name minimum length is 2
+            </div>
+            <div *ngIf="messageCheck('firstName','maxlength')">
+                First name maxlength 10
+            </div>
+            <div *ngIf="messageCheck('firstName','pattern')">
+                First name should have only alphabets and spaces
+            </div>
+
+    </div>
+    <div>
+        <label>Email</label>
+        <input type="email"  name="email" formControlName="email"/>
+    </div>
+    <div *ngIf="validator('email')">
+            <div *ngIf="accountForm.controls.email.errors?.required">
+                Email is required
+            </div>
+          
+            <div *ngIf="accountForm.controls.email.errors?.email">
+                Enter Valid Email
+            </div>
+
+    </div>
+    <div>
+        <label>Age</label>
+        <input type="text"  name="age" formControlName="age"/>
+    </div>
+    <div *ngIf="validator('age')">
+
+    <div *ngIf="accountForm.controls.age.errors?.minage">
+        Minimum Age is 18
+    </div>
+    </div>
+   
+
+    
+</form>
