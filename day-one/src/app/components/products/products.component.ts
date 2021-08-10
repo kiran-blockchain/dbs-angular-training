@@ -22,5 +22,8 @@ export class ProductsComponent implements OnInit {
         this.errorMessage ="Unable to retrieve products"
       })
   }
+  addItemToCart(item:any){
+    this.apiSvc.addToCart(item);
+  }
 
 }

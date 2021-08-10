@@ -1,7 +1,7 @@
 <h1>Reactive Forms</h1>
 
 <form [formGroup]="accountForm" novalidate>
-    <div>
+    <!-- <div>
         <label>First Name</label>
         <input type="text"  name="firstName" formControlName="firstName"/>
     </div>
@@ -19,7 +19,27 @@
                 First name should have only alphabets and spaces
             </div>
 
-    </div>
+    </div> -->
+    <div class="form-group" [ngClass]="{'has-danger':validator('firstName'),'has-success':!validator('firstName')}">
+        <label class="form-label mt-4" for="firstName">First Name</label>
+        
+        <input type="text" name="firstName" formControlName="firstName" 
+        [ngClass]="{'is-invalid':validator('firstName'),'is-valid':!validator('firstName')}"
+        class="form-control" id="firstName">
+       
+        <div *ngIf="messageCheck('firstName','required')" class="invalid-feedback">
+            First name is required
+        </div>
+        <div *ngIf="messageCheck('firstName','minlength')" class="invalid-feedback">
+            First name minimum length is 2
+        </div>
+        <div *ngIf="messageCheck('firstName','maxlength')" class="invalid-feedback">
+            First name maxlength 10
+        </div>
+        <div *ngIf="messageCheck('firstName','pattern')" class="invalid-feedback">
+            First name should have only alphabets and spaces
+        </div>
+      </div>
     <div>
         <label>Email</label>
         <input type="email"  name="email" formControlName="email"/>
