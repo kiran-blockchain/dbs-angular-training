@@ -1,4 +1,4 @@
-import { Component } from "@angular/core";
+import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges } from "@angular/core";
 import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import {MinimumAge} from './custom.validator'
 @Component({
@@ -6,7 +6,7 @@ import {MinimumAge} from './custom.validator'
     templateUrl: "./account.component.html"
 })
 
-export class AccountComponent {
+export class AccountComponent implements OnInit, OnChanges, OnDestroy{
     //Step1
     accountForm: FormGroup;
     
@@ -32,6 +32,15 @@ export class AccountComponent {
            
         })
     }
+    ngOnDestroy(): void {
+        throw new Error("Method not implemented.");
+    }
+    ngOnInit(): void {
+        //throw new Error("Method not implemented.");
+    }
+    ngOnChanges(simple:SimpleChanges){
+        console.log("Avalue in the ui changed")
+    }
     validator(ctrlName:any){
        return(!this.accountForm.controls[ctrlName].valid &&
         (this.accountForm.controls[ctrlName]?.dirty 
@@ -40,6 +49,7 @@ export class AccountComponent {
     messageCheck(ctrlName:any, validation:any){
         return (this.accountForm.controls[ctrlName].errors?.[validation]);
     }
+   
 
 
 }

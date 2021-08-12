@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { DemoService } from '../services/demo.service';
 
 import { UnittestComponent } from './unittest.component';
 
@@ -8,7 +9,8 @@ describe('UnittestComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ UnittestComponent ]
+      declarations: [ UnittestComponent ],
+      providers:[DemoService]
     })
    .compileComponents();
   });
@@ -44,8 +46,15 @@ describe('UnittestComponent', () => {
     fixture.detectChanges();
     const contentOfPTag =app.querySelector('h1').textContent;
     expect(contentOfPTag).toBe('Ravi');
-  
-    
   });
-  
+  //Mocking service dependencies
+
+  it('should Mock the unit tests',()=>{
+// Inject the service
+    const service = fixture.debugElement.injector.get(DemoService);
+    //Mock for a service method
+    let spyOnServiceCalls = spyOn(service,"getCartItems").and.returnValue([{id:1,name:"john"}]);
+    component.ngOnInit();
+    expect(component.count).toBe(1);
+  });
 });

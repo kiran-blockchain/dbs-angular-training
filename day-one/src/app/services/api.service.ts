@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, Subject } from "rxjs";
 
@@ -9,10 +9,27 @@ export class ApiService{
     }
 
     ApiGet(url:string){
-        return this.http.get(url);
+        let httpHeaders = new HttpHeaders();
+        let token = localStorage.getItem("token")?localStorage.getItem("token")?.toString():'';
+        if(token==null){
+            httpHeaders =httpHeaders.append("authorize",'')
+        }
+        else{
+            httpHeaders =httpHeaders.append("authorize",token);
+        }
+        
+        return this.http.get(url,{headers:httpHeaders});
     }
     ApiPost(url:string,data:any){
-        return this.http.post(url,data);
+        let httpHeaders = new HttpHeaders();
+        let token = localStorage.getItem("token")?localStorage.getItem("token")?.toString():'';
+        if(token==null){
+            httpHeaders =httpHeaders.append("authorize",'')
+        }
+        else{
+            httpHeaders =httpHeaders.append("authorize",token);
+        }
+        return this.http.post(url,data,{headers:httpHeaders});
     }
     private cartItems:Subject<any>;
     addToCart(item:any){

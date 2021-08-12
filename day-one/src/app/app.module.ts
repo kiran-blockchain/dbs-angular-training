@@ -14,6 +14,7 @@ import { DBSCommonModule } from './common/common.module';
 import { AccountComponent } from './account/account.component';
 import { PhonePipe } from './pipes/phone.pipe';
 import { UnittestComponent } from './unittest/unittest.component';
+import { ColorDirective } from './color.directive';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { UnittestComponent } from './unittest/unittest.component';
     ProductsComponent,
     AccountComponent,
     PhonePipe,
-    UnittestComponent
+    UnittestComponent,
+    ColorDirective
   ],
 
   //other modules should be referenced in imports

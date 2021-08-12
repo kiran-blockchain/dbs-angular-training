@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 
 
 @Component({
@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit {
+export class ProfileComponent implements OnInit ,OnChanges {
 
   profile={
     email:""  
@@ -14,11 +14,15 @@ export class ProfileComponent implements OnInit {
   constructor() { 
    
   }
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes)
+  }
   validationMessage='';
   ngOnInit(): void {
   }
   onSubmit(form:any){
 
   }
+
 
 }

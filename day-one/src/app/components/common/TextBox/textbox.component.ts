@@ -1,11 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Component, EventEmitter, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChange, SimpleChanges } from "@angular/core";
 
 @Component({
     templateUrl: "./textbox.component.html",
     selector: 'dbs-text-box'
 })
 
-export class TextBoxComponent implements OnInit {
+export class TextBoxComponent implements OnInit, OnChanges, OnDestroy{
     
    @Input()
     data: any;
@@ -23,6 +23,12 @@ export class TextBoxComponent implements OnInit {
             name:"",
             id:""
         }
+    }
+    ngOnDestroy(): void {
+        console.log("I am moved out")
+    }
+    ngOnChanges(changes: SimpleChanges): void {
+       console.log(changes)
     }
     ngOnInit(): void {
        
