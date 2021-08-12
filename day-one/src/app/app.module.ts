@@ -12,6 +12,8 @@ import { ServiceModule } from './services/service.module';
 import { UserModule } from './user/user.module';
 import { DBSCommonModule } from './common/common.module';
 import { AccountComponent } from './account/account.component';
+import { PhonePipe } from './pipes/phone.pipe';
+import { UnittestComponent } from './unittest/unittest.component';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { AccountComponent } from './account/account.component';
     LeftNavComponent,
     DashboardMainComponent,
     ProductsComponent,
-    AccountComponent
+    AccountComponent,
+    PhonePipe,
+    UnittestComponent
   ],
 
   //other modules should be referenced in imports
